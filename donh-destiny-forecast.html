@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Donhr Lishr Shiabie | 𣿅国国运模拟器</title>
+	<style>
+	body{background-color:#00001F;}
+	#start{/*position:absolute;left:50%;top:50%;*/}
+	#nav{width:100%;background-color:#00001f;z-index:99999;height:15%;line-height:10px;position:absolute;top:0px;position:fixed;}
+	#start_p{color:white;font-weight:100;font-size:35px;text-align:center;}
+	#start_p_nav{color:white;font-weight:100;font-size:30px;text-align:center;}
+	#start_p_info{color:white;font-weight:100;font-size:20px;text-align:center;}
+	#dong{letter-spacing:-25px;}
+	#start_but{color:white;background:transparent;border:0.5px solid #ffffff;height:39px;width:200px;font-size:20px;font-weight:100;border-radius:15px;}
+	#start_but:hover{color:#00001f;background-color:#ffffff;cursor:pointer;}
+	#show{
+		width:100%;
+		float:center;
+	}
+	#show_l{
+		background-color:#00003A;
+		height:70px;
+		color:#ffffff;
+		width:125px;
+		border:1px solid #ffffff;
+		border-radius:15px;
+		float:left;
+		position:relative;
+    	left:20%;
+	}
+	#show_m{
+		height:70px;
+		color:#ffffff;
+		width:50px;
+		float:left;
+		position:relative;
+    	left:20%;
+	}
+	#show_r{
+		background-color:#00003A;
+		height:70px;
+		color:#ffffff;
+		width:575px;
+		border:1px solid #ffffff;
+		border-radius:15px;
+		float:left;
+		position:relative;
+    	left:20%;
+	}
+	#text{
+		font-size:15px;
+		color:#ffffff;
+		font-weight:100;
+	}
+	#text_d{
+		letter-spacing:-10px;
+	}
+	</style>
+</head>
+<body id="b">
+
+<div id="nav" style="display:none;" align="center">
+	<p id="start_p_nav"><span id="dong">𣿅</span>&nbsp;&nbsp;&nbsp;国国运模拟器</p>
+	<p id="start_p_info">人口：<span id="pop">0</span>(人)&nbsp;|&nbsp;经济：<span id="eco">0</span>(万亿)&nbsp;|&nbsp;领土：<span id="ter">0</span>(km²)</p>
+</div>
+
+
+<div id="start">
+	<br><br><br><br><br><br>
+	<p id="start_p"><span id="dong">𣿅</span>&nbsp;&nbsp;&nbsp;国国运模拟器</p>
+	<div align="center">
+		<button id="start_but" onClick='start()'>开&nbsp;始&nbsp;模&nbsp;拟</button>
+	</div>
+</div>
+
+<br><br><br><br><br>
+<div id="show" align="center" style="display:none;">
+	<div id="show_l">
+		<p id="text">
+			<span id="text_d">𣿅</span>
+			&nbsp;&nbsp;国<span id="year_num">-</span>年
+		</p>
+	</div>
+	<div id="show_m"></div>
+	<div id="show_r">
+	    <p id="text">-</p>
+	</div>
+</div>
+
+<script>
+var wars = 0;
+var years = 0;
+var popu = 0,econ = 0,terr = 0;
+var pops=0,ecos=0,ters=0;
+pop(15476666);eco(47);ter(476666);
+function start(){
+	var sh=document.getElementById('show');  
+    sh.style.display = 'block';
+	document.getElementById('nav').style.display = 'block';
+	document.getElementById('start').style.display = 'none';
+	setInterval("year()",window.prompt("间隔时间/ms",1500));
+}
+function pop(popu){
+	pops += popu;
+	document.getElementById('pop').innerHTML = pops;
+}
+function eco(econ){
+	ecos += econ;
+	document.getElementById('eco').innerHTML = ecos;
+}
+function ter(terr){
+	ters += terr;
+	document.getElementById('ter').innerHTML = ters;
+}
+function supervise_info(){
+	if(pops<=0){
+		alert('由于人口过少，氵董国灭亡。享国'+years+'年。\n游戏结束，若要重玩请刷新页面');
+		return false;
+	}else if(ecos<=0){
+		alert('由于经济总量过少，氵董国灭亡。享国'+years+'年。\n游戏结束，若要重玩请刷新页面');
+		return false;
+	}else if(ters<=0){
+		alert('由于领土面积过少，氵董国灭亡。享国'+years+'年。\n游戏结束，若要重玩请刷新页面');
+		return false;
+	}else if(wars == 1){
+		return false;
+	}else{
+		return true;
+	}
+}
+function random_event(){
+	//supervise_info();
+	var event_num = Math.random();
+	var event = 0;
+	if(!supervise_info()){ return;}
+	//return event_num;
+	if(event_num <= 0.1){
+		var pres = Math.random();
+		if(pres <= 0.16666666666667){
+			event = '总统Debussy(内卷党)上台执政。';
+			pop(470000);
+			eco(+1);
+			ter(+6666);
+			return event;
+		}else if(pres <= 0.3333333333 && pres > 0.16666666666667){
+			event = '总统Caofucdia(内卷党)上台执政。';
+			pop(470000);
+			eco(+1);
+			ter(6666);
+			return event;
+		}else if(pres <= 0.5 && pres > 0.3333333333){
+			event = '总统Huashhhr(内卷党)上台执政。';
+			pop(4700000);
+			eco(+1);
+			ter(6666);
+			return event;
+		}else if(pres <= 0.6666666667 && pres > 0.5){
+			event = '总统Terry(躺平党)上台执政。';
+			pop(15000);
+			eco(+0.5);
+			ter(1566);
+			return event;
+		}else if(pres <= 0.8333333333 && pres > 0.6666666667){
+			event = '总统Hha(躺平党)上台执政。';
+			pop(15000);
+			eco(+0.5);
+			ter(1566);
+			return event;
+		}else{
+			event = '总统Fucjaby(躺平党)上台执政。';
+			pop(15000);
+			eco(+0.5);
+			ter(1566);
+			return event;
+		}
+	}else if(event_num <= 0.25 && event_num > 0.1){
+		var pres = Math.random();
+		if(pres <= 0.1){
+			event = '三体舰队攻打太阳系，𣿅国舰队1547艘战舰被水滴摧毁。';
+			eco(-1);
+			ter(-50000);
+			return event;
+		}else if(pres <= 0.2 && pres > 0.1){
+			event = '15吨𣿅泄露，大量𣿅国民众死亡，邻国鸡尼帝国趁乱偷𣿅。';
+			pop(-100000);
+			eco(-2);
+			ter(-1000);
+			return event;
+		}else if(pres <= 0.3 && pres > 0.2){
+			event = '全球海平面上升。𣿅和海水反应，大量氯化𣿅排入海洋，也产生了很多钠单质，与海水发生剧烈反应。';
+			pop(-1000);
+			eco(-1);
+			ter(-10000);
+			return event;
+		}else if(pres <= 0.4 && pres > 0.3){
+			event = '今年的厕所朝圣节，有4766万人涌入臭都尿河及附近厕所参加朝圣活动，导致154799人因踩踏事件而死。';
+			pop(-154799);
+			eco(-0.5);
+			ter(0);
+			return event;
+		}else if(pres <= 0.5 && pres > 0.4){
+			event = '𣿅国从邻国钛镁帝国不知情的情况下派特工偷来了13架电摩托，用于壮大南𣿅陆军的军事力量。';
+			pop(0);
+			eco(1.5);
+			ter(100000);
+			return event;
+		}else if(pres <= 0.6 && pres > 0.5){
+			event = '𣿅国发送引力波广播，希望将鸡尼帝国的太空舰队二维化';
+			pop(15470);
+			eco(0.25);
+			ter(100);
+			return event;
+		}else if(pres <= 0.7 && pres > 0.6){
+			event = '总统因智商过低，被强制要求吸食臭𣿅';
+			pop(-1);
+			eco(0);
+			ter(0);
+			return event;
+		}else if(pres <= 0.8 && pres > 0.7){
+			event = '北𣿅高原13处𣿅矿受到了钅即元素的严重污染，产生的放射性导致当地不少野人死亡。';
+			pop(-476);
+			eco(-0.1);
+			ter(0);
+			return event;
+		}else if(pres <= 0.9 && pres > 0.8){
+			event = '内卷党开始了一次全国性党纲宣传并竞赛的活动。';
+			pop(15470);
+			eco(0.75);
+			ter(0);
+			return event;
+		}else{
+			event = '躺平党中的某些人叛党并加入内卷党，躺平党高层为他们举行了一场盛大的退党仪式。';
+			pop(15470);
+			eco(0.15);
+			ter(0);
+			return event;
+		}
+	}else if(event_num <= 0.4 && event_num > 0.25){
+		var pres = Math.random().toFixed(1)*10;
+		var events = ['𣿅国多地遭到了民用𣿅炸弹的袭击，全国进入战备状态。','𣿅国总统被国务卿扇了一耳光，随后国务卿立刻被带去𣿅国调查局接受检查。','国务卿在执政能力测试[化学卷]中得了9分，引发𣿅国民众质疑。','𣿅国遭到巨大海啸袭击,除北𣿅高原幸免于难外，其他省(直辖市)均有不同程度损失。','总统去北𣿅高原视察时被扣留，在当地被迫成为一名军长。','臭都尿河泛滥，4715人因在洪水中洗浴身亡。','总统在全国各地厕所巡回演说，群众热情高涨。','北𣿅高原野人起义，𣿅国乳酸军前去镇压失败。','总统被张清飞石击中，正在医院接受治疗。','𣿅国建成了一座厕所主题喷泉公园，全国各地不少人民前去围观。'];
+		if(pres < 0 || pres > 10){
+			pres = 9;
+		}else if(pres <= 1 && pres > 0){
+			pop(-4700000);
+			eco(-1);
+			ter(0);
+		}else if(pres <= 2 && pres > 1){
+			pop(15470);
+			eco(0);
+			ter(0);
+		}else if(pres <= 3 && pres > 2){
+			pop(15470);
+			eco(0);
+			ter(0);
+		}else if(pres <= 4 && pres > 3){
+			pop(-4700000);
+			eco(-10);
+			ter(0);
+		}else if(pres <= 5 && pres > 4){
+			pop(15470);
+			eco(0);
+			ter(0);
+		}else if(pres <= 6 && pres > 5){
+			pop(-4715);
+			eco(-0.01);
+			ter(0);
+		}else if(pres <= 7 && pres > 6){
+			pop(15470);
+			eco(1);
+			ter(0);
+		}else if(pres <= 8 && pres > 7){
+			pop(-1000);
+			eco(-0.05);
+			ter(0);
+		}else if(pres <= 9 && pres > 8){
+			pop(15470);
+			eco(0);
+			ter(0);
+		}else{
+			pop(15470);
+			eco(+1);
+			ter(0);
+		}
+		event = events[pres];
+		return event;
+	}else if(event_num <= 0.55 && event_num > 0.4){
+		var pres = Math.random();
+		var fleetnum = Math.random().toFixed(1)*10-1;
+		if(fleetnum < 0 || fleetnum > 10){
+			fleetnum = 0;
+		}
+		var fleets = ['自然空间号','蓝色选择号','终极引力号','万有选择号','瓜摊号','总统号','国务卿号','蓝色引力号','万有空间号','自然引力号'];
+		if(pres <= 0.2){
+			event = '𣿅国太空舰队战舰'+fleets[fleetnum]+'在攻打B612小行星时被玫瑰和小王子劝返，𣿅国民众进行示威游行。';
+			pop(15470);
+			eco(-0.5);
+			ter(0);
+			return event;
+		}else if(pres <= 0.4 && pres > 0.2){
+			event = '𣿅国太空舰队战舰'+fleets[fleetnum]+'奉总统命令前往歌者文明母世界进行《友好交流》。';
+			pop(47150);
+			eco(5);
+			ter(10000);
+			return event;
+		}else if(pres <= 0.6 && pres > 0.4){
+			event = '𣿅国太空舰队战舰'+fleets[fleetnum]+'装备上了光粒，令鸡尼帝国、钛镁帝国为之举国轰动。';
+			pop(47470);
+			eco(5);
+			ter(100000);
+			return event;
+		}else if(pres <= 0.8 && pres > 0.6){
+			event = '𣿅国太空舰队战舰'+fleets[fleetnum]+'尝试偷二向箔失败被二维化，总统为他们举行了追悼会并重造了一艘同名新战舰。';
+			pop(-2000);
+			eco(-0.1547);
+			ter(-10000);
+			return event;
+		}else{
+			event = '𣿅国太空舰队战舰'+fleets[fleetnum]+'舰长在如厕时没有关门，被舰队革职。';
+			pop(15470);
+			eco(0);
+			ter(0);
+			return event;
+		}
+	}else if(event_num <= 0.7 && event_num > 0.55){
+		var pres = Math.random();
+		var pros = Math.random().toFixed(1)*10-1;
+		if(pros < 0 || pros > 10){
+			pros = 0;
+		}
+		var new_pros = Math.random().toFixed(1)*10-1;
+		if(new_pros < 0 || new_pros > 10){
+			new_pros = 0;
+		}
+		var province = ['Saby','Maartong','Neigean','Oozonh','Reive','Stwiapid','Goowake','Tamad','Great','Norhier-Donh'];
+		var new_province = ['Ochao','Oochin','Hbiete','Beenttaukkoooozz','Maay-Maare','Quess','Larjy','BangSie','Bang-puie','Cwa-saie'];
+		if(pres <= 1 && pres > 0.5){
+			event = province[pros]+'省(直辖市)分裂成'+province[pros]+'省(直辖市)和'+new_province[new_pros]+'省(直辖市)。';
+			pop(0);
+			eco(2);
+			ter(0);
+			return event;
+		}else{
+			event = province[pros]+'省(直辖市)和'+new_province[new_pros]+'省(直辖市)合并成'+province[pros]+'省(直辖市)。';
+			pop(0);
+			eco(2);
+			ter(0);
+			return event;
+		}
+	}else if(event_num <= 0.8 && event_num > 0.7){
+		var pres = Math.random().toFixed(1)*10;
+		var events = ['总统访问鸡尼帝国鸡家军。','总统小便时不慎崴到右脚，导致右脚踩入小便池并卡住。此事件引发了𣿅国国内外媒体的广泛关注，不少媒体还前往救援现场进行直播。','总统重申了将飞蛾列为𣿅国重点防控害虫，并亲自带头打死了一只藏在办公室空调上的飞蛾，得到了全国人民普遍赞扬。','𣿅国气象局忘记密码，导致台风无法登陆。','𣿅国大半年没有下雨，𣿅国航空派出一架𣿅动力飞机，用于将云层变为氢氧化𣿅进行人工降雨。','国务卿体验鸡尼帝国军队正步走，被内阁成员以叛国罪关入监狱，并在监狱中负责主持厕所朝圣活动。','总统因为自己一手抓火线一手抓零线没有死而将电力公司董事长革职。','国务卿投奔钛镁帝国，在观看钛镁帝国传统表演——镁条在纯氧中燃烧时被亮瞎。','臭都尿河突然变清澈，被认为是不祥之兆。总统下令执行排尿补贴政策。','𣿅国全面占领柯伊伯带和奥尔特星云。'];
+		if(pres < 0 || pres > 10){
+			pres = 9;
+		}else if(pres <= 1 && pres > 0){
+			pop(+100);
+			eco(+0.1);
+			ter(0);
+		}else if(pres <= 2 && pres > 1){
+			pop(+100);
+			eco(-0.5);
+			ter(0);
+		}else if(pres <= 3 && pres > 2){
+			pop(+100);
+			eco(0);
+			ter(+100);
+		}else if(pres <= 4 && pres > 3){
+			pop(-1000);
+			eco(-5);
+			ter(0);
+		}else if(pres <= 5 && pres > 4){
+			pop(-500);
+			eco(+0.1);
+			ter(0);
+		}else if(pres <= 6 && pres > 5){
+			pop(+100);
+			eco(-0.1);
+			ter(0);
+		}else if(pres <= 7 && pres > 6){
+			pop(-1000);
+			eco(-1.1);
+			ter(0);
+		}else if(pres <= 8 && pres > 7){
+			pop(-1);
+			eco(-0.05);
+			ter(0);
+		}else if(pres <= 9 && pres > 8){
+			pop(+100);
+			eco(+0.6);
+			ter(0);
+		}else{
+			pop(15470);
+			eco(+1);
+			ter(+1000000);
+		}
+		event = events[pres];
+		return event;
+	}/*else if(event_num <= 0.9 && event_num > 0.8){
+		wars = 1;
+		var cout=document.getElementById('show');  
+    	cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">世界大战打响。</p></div></div>';
+		for(var k=1;k<=46;k++){
+			war();
+		}
+		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">世界大战结束。</p></div></div>';
+	}*/else if(event_num <= 1 && event_num > 0.8){
+		var pres = Math.random();
+		var elenum = Math.random().toFixed(1)*10-1;
+		if(elenum < 0 || elenum > 10){
+			elenum = 0;
+		}
+		var pros = Math.random().toFixed(1)*10-1;
+		if(pros < 0 || pros > 10){
+			pros = 0;
+		}
+		var cheele = ['分数价𣿅元素','过氧化𣿅Va4O2','一氧化四𣿅Va4O','氯化𣿅VaCl','次𣿅酸钙Ca(VaO2)2','甲酸𣿅HCOOVa','葡萄糖酸𣿅C6H11VaO7','硫酸𣿅Va2SO4','碱式碳酸𣿅(𣿅绿)Va8(OH)2CO3','臭𣿅化汞HgVa3','氰化𣿅VaCN'];
+		var province = ['Saby','Maartong','Neigean','Oozonh','Reive','Stwiapid','Goowake','Tamad','Great','Norhier-Donh'];
+		event = '在总统的主持下，𣿅国研究人员在'+province[pros]+'省(直辖市)开展了围绕'+cheele[elenum]+'进行的化学研究。';
+		pop(0);
+		eco(2);
+		ter(0);
+		return event;
+	}
+}
+function war(){
+	var cout=document.getElementById('show'); 
+	//var enemy = ['Piej','Khiinnie(鸡家军)','Tiemaaye','Sheechon'];
+	var army = ['[装甲车]轿车','[装甲车]摩托车','[装甲车]电动自行车','[装甲车]自行车','[装甲车]滑板','[火炮]化学课本','[火炮]数学培优书','[火炮]水壶','[火炮]凌震的炮','[核武器]𣿅弹']
+	var air_force = ['[战机]Fac-35','[战机]Fac-22','[𣿅动力战机]Donh-15(歼击机)','[𣿅动力战机]Donh-47(鸽子)','[𣿅动力战机]Donh-13(纸飞机)','[核武器]𣿅弹','[空对地]物理课本','[导弹]超音速𣿅导弹','[导弹]语文笔记','[导弹]国务卿的水壶'];
+	var navy = ['[载具]纸船','[载具]水滴鱼','[载具]浮游生物','[载具]𣿅号航空母舰','[载具]水上摩托','[武器]鱼雷','[武器]鲸鱼粪便','[武器]三硝基甲𣿅','[武器]总统的一肚子坏水','[武器]硝酸𣿅炸弹'];
+	var spa_force = ['自然空间号','蓝色选择号','终极引力号','万有选择号','瓜摊号','总统号','国务卿号','蓝色引力号','万有空间号','自然引力号'];
+	var enemys = Math.random().toFixed(1)*10-1;
+	var armys = Math.random().toFixed(1)*10-1;
+	var air_forces = Math.random().toFixed(1)*10-1;
+	var navys = Math.random().toFixed(1)*10-1;
+	var spa_force = Math.random().toFixed(1)*10-1;
+	var form = Math.random().toFixed(1)*10-1;
+	if(armys < 0){
+		armys = 0;
+	}else if(air_forces < 0){
+		air_forces = 0;
+	}else if(navys < 0){
+		navys = 0;
+	}else if(spa_forces < 0){
+		spc_forces = 0;
+	}
+	if(enemys < 0){
+		enemys = 0;
+	}
+	if(enemys >= 0 && enemys <= 0.25){
+		enemys = 'Piej';
+	}else if(enemys >= 0.25 && enemys <= 0.5){
+		enemys = 'Khiinnie(鸡家军)';
+	}else if(enemys >= 0.5 && enemys <= 0.75){
+		enemys = 'Tiemaaye';
+	}else if(enemys >= 0.75 && enemys <= 1){
+		enemys = 'Sheechon';
+	}
+	var result = 0;
+	if(form >= 0 && form < 0.25){//army
+		result = Math.random();
+		if(result >= 0.5){
+			event = '𣿅国陆军'+army[armys]+'VS'+enemys+army[armys]+',𣿅国胜利。'; 
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}else{
+			event = '𣿅国陆军'+army[armys]+'VS'+enemys+army[armys]+',𣿅国战败。';
+			cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}
+	}else if(form >= 0.25 && form < 0.5){//air_force
+		if(result >= 0.5){
+			event = '𣿅国空军'+air_force[air_forces]+'VS'+enemys+air_force[air_forces]+',𣿅国胜利。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}else{
+			event = '𣿅国空军'+air_force[air_forces]+'VS'+enemys+air_force[air_forces]+',𣿅国战败。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}
+	}else if(form >= 0.5 && form < 0.75){//navy
+		if(result >= 0.5){
+			event = '𣿅国海军'+navy[navys]+'VS'+enemys+navy[navys]+',𣿅国胜利。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}else{
+			event = '𣿅国海军'+navy[navys]+'VS'+enemys+navy[navys]+',𣿅国战败。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}
+	}else{//spa_force
+		if(result >= 0.5){
+			event = '𣿅国太空军'+spa_force[spa_forces]+'VS'+enemys+spa_force[spa_forces]+',𣿅国胜利。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}else{
+			event = '𣿅国太空军'+spa_force[spa_forces]+'VS'+enemys+spa_force[spa_forces]+',𣿅国战败。';
+    		cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+event+'</p></div></div>';
+		}
+	}
+}
+function year(){  
+    var cout=document.getElementById('show');  
+    cout.innerHTML = cout.innerHTML+'<br><br><br><br><div id="show" align="center" style="width:100%;float:center;"><div id="show_l" style="background-color:#00003A;height:70px;color:#ffffff;width:125px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text"><span id="text_d" style="letter-spacing:-10px;">𣿅</span>&nbsp;&nbsp;国<span id="year_num">'+years+'</span>年</p></div><div id="show_m" style="height:70px;color:#ffffff;width:50px;float:left;position:relative;left:20%;"></div><div id="show_r" style="background-color:#00003A;height:70px;color:#ffffff;width:575px;border:1px solid #ffffff;border-radius:15px;float:left;position:relative;left:20%;"><p id="text" style="font-size:15px;color:#ffffff;font-weight:100;">'+random_event()+'</p></div></div>';
+	years = years + 1;
+}
+
+</script>
+
+</body>
+</html>
