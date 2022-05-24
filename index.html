@@ -322,10 +322,7 @@
 <div style="z-index: 999;position: fixed;width:100%;top:-21px;line-height:0px;text-align:center;">
 <h1 style="color:white;text-align:left;line-height:0px;">
 	<div style="float:left;line-height:0px;top:0px;letter-spacing:-5px;background-color:white;vertical-align: middle;" id="nav">
-		<button style="color:black;vertical-align: middle;" onclick="reload()" id="Brunei">
-				<img src="https://p.ananas.chaoxing.com/star3/origin/ab362a3918e05c899d4e5c6781d37a8e.png" width=125%>
-		</button>
-		<button style="color:DeepSkyBlue;" onclick="reload()" id="short-nav"><b>小懂</b></button>
+		<button style="color:DeepSkyBlue;" onclick="reload()" id="short-nav"><b>返回主页</b></button>
 	</div>	
 		<div style="float:right;margin-left:20px;margin-right:20px;position:absolute;right:125px;letter-spacing:-5px;">		
 		<!--<button style="color:black;" onclick="firstpage()" id="short">首页</button>-->
@@ -375,7 +372,7 @@
 		</div>
 		<div class="atalk">
 			<img src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=164820442,727739103&fm=26&gp=0.jpg" width="5.5%"/>
-			<span id="asay">体验小懂即默认同意老冰用户协议,如需查看用户协议,请在.txt文件《小懂用户协议》中查看</span>
+			<span id="asay">体验小懂即默认同意小懂用户协议,如需查看用户协议,请在.txt文件《小懂用户协议》中查看</span>
 		</div>
 	</div>
 	<div class="talk_input">
@@ -487,7 +484,7 @@ function youke(){
 	x.innerHTML='<div style="opacity:0;"></div>';
 }
 function reload(){
-	location.reload();
+	window.open("https://dornhub.github.io/",'self');
 }
 function bbsm(){
 	alert("版本：小懂 V2.0.0\n增加/优化功能：全新格局，排版简约。");
